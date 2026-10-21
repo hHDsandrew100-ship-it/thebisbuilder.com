@@ -1,53 +1,415 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Business Builder</title>
-  <meta name="description" content="The Business Builder. Contact us by phone at 503-930-9141 or send a message online.">
-  <link rel="stylesheet" href="/styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Business Builder | Build It. Brand It. Grow It.</title>
+<meta name="description" content="Websites, Google Business Profile, social media, local SEO, reviews and ads for small businesses. We handle the digital side of your business so you can focus on running it.">
+<meta property="og:title" content="The Business Builder">
+<meta property="og:description" content="We become your digital department. Websites, local SEO, social media and ads for small businesses.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thebisbuilder.com">
+<meta property="og:site_name" content="The Business Builder">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://thebisbuilder.com">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2315202E'/><rect x='22' y='58' width='56' height='16' fill='%23FFC72C'/><rect x='30' y='40' width='40' height='14' fill='%23FFC72C'/><rect x='38' y='24' width='24' height='12' fill='%23FFC72C'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Shared by every page. build.mjs inlines this into each page for the worker. */
+:root{
+  --ink:#15202E;
+  --steel:#2E3B4E;
+  --concrete:#E9EBEE;
+  --paper:#FFFFFF;
+  --hivis:#FFC72C;
+  --blue:#2B59C3;
+  --muted:#5B6676;
+  --line:#CDD2D9;
+  --ok:#1B7F54;
+  --bad:#C2412D;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+/* Author rules like label{display:grid} would otherwise override the hidden attribute */
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--concrete);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+/* Pages set a narrower --w on .wrap; the header always uses the full width */
+.wrap{width:min(var(--w,1160px),100% - 2.5rem);margin-inline:auto}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--ink);color:#fff;border-bottom:4px solid var(--hivis)}
+.top .wrap{--w:1160px;display:flex;align-items:center;justify-content:space-between;gap:1rem;height:64px}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:800;font-stretch:80%;font-size:1.3rem;letter-spacing:.01em}
+.logo svg{width:30px;height:30px;flex:none}
+.back{text-decoration:none;font-weight:500;font-size:.95rem;opacity:.85;white-space:nowrap}
+.back:hover{opacity:1}
+@media (max-width:420px){.logo{font-size:1.05rem;gap:.45rem;line-height:1.05}.logo svg{width:24px;height:24px}}
+
+/* Footer */
+footer{background:var(--ink);color:#AEB7C4;font-size:.92rem}
+.foot-contact a{color:#fff;text-decoration:none;border-bottom:2px solid var(--hivis)}
+.foot-link{color:#fff}
+</style>
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+img,svg{max-width:100%}
+
+/* Header */
+.nav{display:flex;gap:1.6rem;align-items:center}
+.nav a{text-decoration:none;font-weight:500;font-size:.95rem;opacity:.85}
+.nav a:hover{opacity:1}
+.nav .btn{opacity:1}
+@media (max-width:760px){.nav a:not(.btn){display:none}}
+
+.btn{display:inline-block;font:700 1rem/1 var(--body);text-decoration:none;padding:.9rem 1.3rem;border:2px solid var(--ink);background:var(--hivis);color:var(--ink);cursor:pointer;border-radius:3px;transition:transform .12s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.top .btn{padding:.6rem 1rem;font-size:.9rem;border-color:var(--hivis)}
+
+/* Hero */
+.hero{background:var(--ink);color:#fff;padding:4.5rem 0 5rem;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:3.5rem;align-items:start}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:2.5rem}}
+.tagline{font-family:var(--display);font-stretch:125%;font-weight:600;font-size:.95rem;color:var(--hivis);margin:0 0 1.2rem}
+h1{font-family:var(--display);font-weight:900;font-stretch:72%;font-size:clamp(3rem,8.5vw,6.2rem);line-height:.92;letter-spacing:-.01em;margin:0 0 1.5rem}
+.hero p.lede{font-size:1.2rem;max-width:34ch;color:#D6DBE3;margin:0 0 2rem}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:.8rem}
+.hero .btn.ghost{color:#fff}
+
+/* Scorecard */
+.card{background:var(--paper);color:var(--ink);border-radius:4px;box-shadow:10px 10px 0 var(--hivis);padding:1.6rem 1.6rem 1.4rem}
+.card h2{font-family:var(--display);font-stretch:85%;font-weight:800;font-size:1.55rem;line-height:1.1;margin:0 0 .3rem}
+.card .sub{color:var(--muted);font-size:.95rem;margin:0 0 1.1rem}
+.checks{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.checks li{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--line)}
+.checks .name{font-weight:600;font-size:.98rem}
+.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:3px;overflow:hidden;flex:none}
+.seg button{font:600 .82rem/1 var(--body);padding:.45rem .7rem;border:0;background:#fff;color:var(--ink);cursor:pointer}
+.seg button+button{border-left:1.5px solid var(--ink)}
+.seg button[aria-pressed="true"].yes{background:var(--ok);color:#fff}
+.seg button[aria-pressed="true"].no{background:var(--bad);color:#fff}
+.meter{display:flex;gap:4px;margin:1.2rem 0 .6rem}
+.meter span{flex:1;height:12px;background:var(--concrete);border-radius:1px;transition:background .25s}
+.meter span.on{background:var(--ok)}
+.meter span.off{background:var(--bad)}
+.result{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap}
+.result strong{font-family:var(--display);font-weight:900;font-stretch:75%;font-size:2.4rem;line-height:1}
+.result span{color:var(--muted);font-size:.95rem;flex:1;min-width:14ch}
+.card .btn{width:100%;margin-top:1rem;text-align:center;font-size:1.1rem}
+.quiz-note{margin:.6rem 0 0;text-align:center;color:var(--muted);font-size:.9rem}
+
+
+/* Sections */
+section{padding:5rem 0}
+.sec-head{max-width:640px;margin-bottom:2.8rem}
+h2.big{font-family:var(--display);font-weight:900;font-stretch:78%;font-size:clamp(2.2rem,5vw,3.4rem);line-height:.98;margin:0 0 1rem}
+.sec-head p{color:var(--muted);margin:0;font-size:1.1rem}
+
+/* Who */
+.who{background:var(--paper)}
+.trades{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:3px solid var(--ink)}
+@media (max-width:900px){.trades{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.trades{grid-template-columns:1fr}}
+.trade{padding:1.4rem 1.4rem 1.6rem 0;border-bottom:1px solid var(--line)}
+.trade h3{font-family:var(--display);font-stretch:90%;font-weight:800;font-size:1.2rem;margin:0 0 .5rem}
+.trade p{margin:0;color:var(--muted);font-size:.97rem}
+
+/* Packages */
+.pkgs{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:1.2rem;align-items:stretch}
+@media (max-width:960px){.pkgs{grid-template-columns:1fr}}
+.pkg{background:var(--paper);border:2px solid var(--ink);border-radius:4px;padding:1.8rem;display:flex;flex-direction:column}
+.pkg.feature{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:10px 10px 0 var(--hivis)}
+.pkg .kind{font-weight:600;font-size:.9rem;color:var(--muted);margin:0 0 .4rem}
+.pkg.feature .kind{color:var(--hivis)}
+.pkg h3{font-family:var(--display);font-weight:900;font-stretch:80%;font-size:2.4rem;line-height:1;margin:0 0 .2rem}
+.pkg .full{margin:0 0 1.3rem;font-weight:500}
+.price{font-family:var(--display);font-weight:800;font-stretch:85%;font-size:2rem;line-height:1.1;margin:0 0 1.3rem}
+.price small{font-family:var(--body);font-weight:500;font-size:.95rem;color:var(--muted)}
+.pkg.feature .price small{color:#AEB7C4}
+.pkg ul{margin:0 0 1.6rem;padding:0;list-style:none;flex:1}
+.pkg li{padding:.4rem 0 .4rem 1.6rem;position:relative;font-size:.97rem;border-bottom:1px dashed var(--line)}
+.pkg.feature li{border-color:rgba(255,255,255,.15)}
+.pkg li::before{content:"";position:absolute;left:0;top:.85rem;width:.75rem;height:.75rem;background:var(--hivis);border:1.5px solid var(--ink)}
+.pkg .btn{text-align:center}
+.pkg:not(.feature) .btn{background:transparent}
+.pkg:not(.feature) .btn:hover{background:var(--hivis)}
+
+.addons{margin-top:3rem;border-top:3px solid var(--ink)}
+.addon{display:grid;grid-template-columns:1fr auto;gap:.3rem 2rem;padding:1.2rem 0;border-bottom:1px solid var(--line);align-items:baseline}
+.addon h4{margin:0;font-family:var(--display);font-stretch:90%;font-weight:800;font-size:1.25rem}
+.addon .amt{font-family:var(--display);font-weight:800;font-size:1.25rem;text-align:right;white-space:nowrap}
+.addon p{margin:0;color:var(--muted);font-size:.97rem;grid-column:1/-1;max-width:70ch}
+
+/* Process */
+.process{background:var(--steel);color:#fff}
+.process .sec-head p{color:#C3CAD5}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:2.2rem 2rem;counter-reset:s}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+.steps li{counter-increment:s;border-top:3px solid var(--hivis);padding-top:1rem}
+.steps li::before{content:counter(s);display:block;font-family:var(--display);font-weight:900;font-stretch:70%;font-size:3rem;line-height:1;color:var(--hivis);margin-bottom:.5rem}
+.steps h3{margin:0 0 .4rem;font-size:1.1rem}
+.steps p{margin:0;color:#C3CAD5;font-size:.97rem}
+
+/* Promise */
+.promise{background:var(--hivis);padding:4rem 0}
+.promise p{font-family:var(--display);font-weight:900;font-stretch:75%;font-size:clamp(2rem,5.5vw,3.8rem);line-height:1;margin:0;max-width:20ch}
+
+/* Closing CTA */
+.cta-end{text-align:center;display:grid;justify-items:center;gap:1rem}
+.cta-end h2{max-width:18ch;margin:0}
+.cta-end p{color:var(--muted);font-size:1.15rem;margin:0 0 .8rem;max-width:44ch}
+.big-btn{font-size:1.15rem;padding:1.15rem 2rem;box-shadow:6px 6px 0 var(--ink)}
+
+footer{padding:2.5rem 0}
+footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
+footer .logo{color:#fff}
+
+.top .btn{white-space:nowrap}
+@media (max-width:420px){.top .btn{padding:.55rem .75rem;font-size:.82rem}}
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="/">The Business Builder</a>
-    <a class="phone" href="tel:+15039309141">503-930-9141</a>
-  </header>
 
-  <main>
-    <section class="hero">
-      <h1>The Business Builder</h1>
-      <p>Tell us about your business and what you need. We will get back to you directly.</p>
-      <a class="button" href="#contact">Contact us</a>
-    </section>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="The Business Builder home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect x="10" y="62" width="80" height="22" fill="#FFC72C"/><rect x="22" y="38" width="56" height="20" fill="#FFC72C"/><rect x="34" y="16" width="32" height="18" fill="#FFC72C"/></svg>
+      THE BUSINESS BUILDER
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#who">Who we help</a>
+      <a href="#packages">Packages</a>
+      <a href="#how">How it works</a>
+      <a class="btn" href="assessment.html">Free assessment</a>
+    </nav>
+  </div>
+</header>
 
-    <section id="contact" class="contact">
-      <h2>Contact us</h2>
-      <p>Call <a href="tel:+15039309141">503-930-9141</a> or send a message below.</p>
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="tagline">Build It. Brand It. Grow It.</p>
+        <h1>We become your digital department.</h1>
+        <p class="lede">Your website, Google profile, social media, reviews and ads, all handled for you. You run the business. We make sure customers can find it.</p>
+        <div class="ctas">
+          <a class="btn" href="assessment.html">Get a free assessment</a>
+          <a class="btn ghost" href="#packages">See packages</a>
+        </div>
+      </div>
 
-      <form id="contact-form" novalidate>
-        <label>Name
-          <input name="name" type="text" autocomplete="name" maxlength="100" required>
-        </label>
-        <label>Email
-          <input name="email" type="email" autocomplete="email" maxlength="254" required>
-        </label>
-        <label>Phone (optional)
-          <input name="phone" type="tel" autocomplete="tel" maxlength="30">
-        </label>
-        <label>Message
-          <textarea name="message" rows="5" maxlength="5000" required></textarea>
-        </label>
-        <input class="hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="button" type="submit">Send message</button>
-        <p id="form-status" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-  </main>
+      <div class="card" id="scorecard">
+        <h2>How findable is your business?</h2>
+        <p class="sub">Tap "Have it" or "Missing" for each one. It takes 20 seconds.</p>
+        <ul class="checks" id="checks"></ul>
+        <div class="meter" id="meter" aria-hidden="true"></div>
+        <div class="result" aria-live="polite">
+          <strong id="score">0/7</strong>
+          <span id="verdict">Answer each line to see your score.</span>
+        </div>
+        <a class="btn" href="quiz.html" id="scoreCta">Take the quiz!</a>
+        <p class="quiz-note">5 quick questions to see exactly what your business needs.</p>
+      </div>
+    </div>
+  </section>
 
-  <footer class="site-footer">
-    <p>&copy; <span id="year"></span> The Business Builder &middot; <a href="tel:+15039309141">503-930-9141</a></p>
-  </footer>
+  <section class="who" id="who">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="big">Built for businesses too busy working to fix their website.</h2>
+        <p>If you're just starting out, your website is outdated, or you don't have time to keep up with Google and social media, we're here for you.</p>
+      </div>
+      <div class="trades">
+        <div class="trade"><h3>Home &amp; trade services</h3><p>Cleaners, landscapers, handymen, contractors, plumbers, electricians, painters.</p></div>
+        <div class="trade"><h3>Mobile &amp; specialty</h3><p>Auto detailers, mobile mechanics, movers, pressure-washing crews.</p></div>
+        <div class="trade"><h3>Professional services</h3><p>Notaries, tax preparers, insurance agents, realtors, consultants, bookkeepers.</p></div>
+        <div class="trade"><h3>Personal &amp; retail</h3><p>Salons, barbers, restaurants, food trucks, boutiques, photographers, trainers.</p></div>
+      </div>
+    </div>
+  </section>
 
-  <script src="/contact.js"></script>
+  <section id="packages">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="big">Pick where you're starting from.</h2>
+        <p>Every package comes with a real person who knows your business. Monthly plans include a clear report, so you always see what you're paying for.</p>
+      </div>
+
+      <div class="pkgs">
+        <article class="pkg">
+          <p class="kind">Starting from scratch</p>
+          <h3>BUILD</h3>
+          <p class="full">Business Builder</p>
+          <p class="price">$999 <small>one time</small></p>
+          <ul>
+            <li>Consultation and planning</li>
+            <li>Professional, mobile-friendly website</li>
+            <li>Domain and business email setup</li>
+            <li>Contact forms and click-to-call</li>
+            <li>Google Business Profile setup</li>
+            <li>Social media profile setup</li>
+            <li>Basic branding and SEO</li>
+            <li>Analytics and launch</li>
+          </ul>
+          <a class="btn" href="assessment.html" data-pkg="BUILD">Start with BUILD</a>
+        </article>
+
+        <article class="pkg feature">
+          <p class="kind">Most complete</p>
+          <h3>BUILD + GROW</h3>
+          <p class="full">Business Builder Complete</p>
+          <p class="price">$998 <small>setup</small> + $399<small>/mo</small></p>
+          <ul>
+            <li>Everything in BUILD</li>
+            <li>Everything in GROW</li>
+            <li>Hosting, maintenance and website changes</li>
+            <li>Social media and content</li>
+            <li>Local SEO and reputation management</li>
+            <li>Marketing strategy</li>
+            <li>Monthly reporting</li>
+          </ul>
+          <a class="btn" href="assessment.html" data-pkg="BUILD + GROW">Get the complete package</a>
+        </article>
+
+        <article class="pkg">
+          <p class="kind">Already have a site</p>
+          <h3>GROW</h3>
+          <p class="full">Business Builder Growth</p>
+          <p class="price">$399<small>/mo</small></p>
+          <ul>
+            <li>Hosting and maintenance</li>
+            <li>Security updates and site edits</li>
+            <li>Google Business Profile management</li>
+            <li>Social media management and content</li>
+            <li>Local SEO</li>
+            <li>Review management</li>
+            <li>Monthly report and marketing check-in</li>
+          </ul>
+          <a class="btn" href="assessment.html" data-pkg="GROW">Start with GROW</a>
+        </article>
+      </div>
+
+      <div class="addons">
+        <div class="addon">
+          <h4>Website Care</h4><span class="amt">$129/mo</span>
+          <p>Hosting, security, backups, software updates, minor changes and monitoring. For businesses that just need their site kept safe and running.</p>
+        </div>
+        <div class="addon">
+          <h4>Website Care Plus</h4><span class="amt">$199/mo</span>
+          <p>Everything in Website Care, plus content updates, SEO monitoring, Google Business updates and a monthly report.</p>
+        </div>
+        <div class="addon">
+          <h4>Advertising Management</h4><span class="amt">$299/mo + ad spend</span>
+          <p>Google Ads, Facebook and Instagram ads, retargeting, promotions, landing pages and lead generation. Our management fee and your ad budget are always listed separately on every invoice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="big">How it works</h2>
+        <p>No jargon and no surprises. Here's exactly what happens after you reach out.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Free assessment</h3><p>We review your website, Google profile, social pages, reviews, SEO and mobile experience.</p></li>
+        <li><h3>Walk through the gaps</h3><p>We show you a simple scorecard: what's working, what's missing and what it's costing you.</p></li>
+        <li><h3>Choose a package</h3><p>We recommend BUILD, GROW or both, based on where you are today. You decide.</p></li>
+        <li><h3>We build it</h3><p>We set up and launch your site, profiles and accounts. Everything is in your name, and you own it.</p></li>
+        <li><h3>We keep it running</h3><p>Updates, posts, reviews and SEO happen every month, without you having to chase anyone.</p></li>
+        <li><h3>You see the results</h3><p>A plain-English monthly report shows your calls, visits and reviews, plus what we're doing next.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="promise">
+    <div class="wrap">
+      <p>We handle the digital side of your business so you can focus on running it.</p>
+    </div>
+  </div>
+
+  <section id="contact">
+    <div class="wrap cta-end">
+      <h2 class="big">Get your free Digital Presence Assessment.</h2>
+      <p>See exactly where your business is losing customers online. No cost, no obligation.</p>
+      <a class="btn big-btn" href="assessment.html">Get my free assessment</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top">THE BUSINESS BUILDER</a>
+    <span class="foot-contact"><a href="tel:+15039309141">503-930-9141</a> &middot; <a href="mailto:andrew@thebusinessbuilder.tech">andrew@thebusinessbuilder.tech</a></span>
+    <span>Build It. Brand It. Grow It. &copy; <span id="yr"></span> The Business Builder &middot; <a class="foot-link" href="privacy.html">Privacy</a></span>
+  </div>
+</footer>
+
+<script>
+
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+// Scorecard
+const items = ["Website","Google Business Profile","Facebook","Instagram","Local search visibility","Online reviews","Mobile-friendly website"];
+const state = items.map(() => null);
+const checks = document.getElementById("checks");
+const meter = document.getElementById("meter");
+items.forEach((name, i) => {
+  const li = document.createElement("li");
+  li.innerHTML = `<span class="name">${name}</span>
+    <span class="seg" role="group" aria-label="${name}">
+      <button type="button" class="yes" aria-pressed="false">Have it</button>
+      <button type="button" class="no" aria-pressed="false">Missing</button>
+    </span>`;
+  const [yes, no] = li.querySelectorAll("button");
+  yes.onclick = () => set(i, true, yes, no);
+  no.onclick = () => set(i, false, yes, no);
+  checks.appendChild(li);
+  meter.appendChild(document.createElement("span"));
+});
+function set(i, val, yes, no){
+  state[i] = val;
+  yes.setAttribute("aria-pressed", val === true);
+  no.setAttribute("aria-pressed", val === false);
+  render();
+}
+function render(){
+  const have = state.filter(v => v === true).length;
+  const answered = state.filter(v => v !== null).length;
+  [...meter.children].forEach((s, i) => s.className = state[i] === true ? "on" : state[i] === false ? "off" : "");
+  document.getElementById("score").textContent = `${have}/7`;
+  let v;
+  if (answered < 7) v = `${7 - answered} left to answer.`;
+  else if (have <= 2) v = "Customers searching for you are likely finding a competitor instead.";
+  else if (have <= 5) v = "You have a start, but there are gaps costing you calls.";
+  else if (have === 6) v = "Almost there. One gap is worth closing.";
+  else v = "Strong foundation. Now it's about keeping it active and growing.";
+  document.getElementById("verdict").textContent = v;
+}
+document.getElementById("scoreCta").addEventListener("click", e => {
+  const missing = items.filter((_, i) => state[i] === false);
+  if (missing.length) e.currentTarget.href = "quiz.html?missing=" + encodeURIComponent(missing.join("|"));
+});
+
+// Package buttons carry their package to the assessment page
+document.querySelectorAll("[data-pkg]").forEach(b => {
+  const p = new URLSearchParams({package: b.dataset.pkg});
+  b.href = "assessment.html?" + p;
+});
+</script>
 </body>
 </html>

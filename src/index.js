@@ -1,54 +1,57 @@
-const MAX_LENGTHS = { name: 100, email: 254, phone: 30, message: 5000 };
+const MAX_FIELDS = 60;
+const MAX_KEY_LENGTH = 80;
+const MAX_VALUE_LENGTH = 3000;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const json = (body, status = 200) => Response.json(body, { status });
+const singleLine = (text) => text.replace(/[\r\n]+/g, " ");
 
 async function handleContact(request, env) {
   if (!env.CONTACT_TO || !env.CONTACT_FROM) {
     return json({ error: "Contact form is not configured." }, 500);
   }
 
-  let data;
+  let body;
   try {
-    data = await request.json();
+    body = await request.json();
   } catch {
     return json({ error: "Invalid request." }, 400);
   }
 
-  // Honeypot: real visitors never fill this hidden field. Pretend success to bots.
-  if (data.website) return json({ ok: true });
+  const entries = Object.entries(body?.fields ?? {});
+  if (!entries.length || entries.length > MAX_FIELDS) {
+    return json({ error: "Invalid request." }, 400);
+  }
 
   const fields = {};
-  for (const [key, max] of Object.entries(MAX_LENGTHS)) {
-    fields[key] = typeof data[key] === "string" ? data[key].trim() : "";
-    if (fields[key].length > max) {
-      return json({ error: `${key} is too long.` }, 400);
+  for (const [key, value] of entries) {
+    if (typeof value !== "string" || key.length > MAX_KEY_LENGTH || value.length > MAX_VALUE_LENGTH) {
+      return json({ error: "Invalid request." }, 400);
     }
+    fields[key] = value.trim();
   }
 
-  if (!fields.name || !fields.message || !EMAIL_PATTERN.test(fields.email)) {
-    return json({ error: "Name, a valid email, and a message are required." }, 400);
+  const name = fields["Owner name"];
+  const email = fields["Email"];
+  if (!name || !EMAIL_PATTERN.test(email ?? "")) {
+    return json({ error: "Name and a valid email are required." }, 400);
   }
 
-  const text = [
-    `Name: ${fields.name}`,
-    `Email: ${fields.email}`,
-    `Phone: ${fields.phone || "not provided"}`,
-    "",
-    fields.message,
-  ].join("\n");
+  const text = Object.entries(fields)
+    .map(([key, value]) => `${key}: ${value}`)
+    .join("\n");
 
   try {
     await env.EMAIL.send({
       from: { email: env.CONTACT_FROM, name: "The Business Builder Website" },
       to: env.CONTACT_TO,
-      replyTo: { email: fields.email, name: fields.name },
-      subject: `New website inquiry from ${fields.name.replace(/[\r\n]+/g, " ")}`,
+      replyTo: { email, name: singleLine(name) },
+      subject: `Assessment request: ${singleLine(fields["Business name"] || name)}`,
       text,
     });
   } catch (err) {
     console.error("Email send failed", err);
-    return json({ error: "Could not send your message. Please call us instead." }, 502);
+    return json({ error: "Could not send your request." }, 502);
   }
 
   return json({ ok: true });

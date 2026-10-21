@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy | The Business Builder</title>
+<meta name="description" content="What The Business Builder collects when you request a free assessment, why, and who sees it.">
+<meta property="og:title" content="Privacy | The Business Builder">
+<meta property="og:description" content="What The Business Builder collects when you request a free assessment, why, and who sees it.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Business Builder">
+<meta property="og:url" content="https://thebisbuilder.com/privacy">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://thebisbuilder.com/privacy">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2315202E'/><rect x='22' y='58' width='56' height='16' fill='%23FFC72C'/><rect x='30' y='40' width='40' height='14' fill='%23FFC72C'/><rect x='38' y='24' width='24' height='12' fill='%23FFC72C'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Shared by every page. build.mjs inlines this into each page for the worker. */
+:root{
+  --ink:#15202E;
+  --steel:#2E3B4E;
+  --concrete:#E9EBEE;
+  --paper:#FFFFFF;
+  --hivis:#FFC72C;
+  --blue:#2B59C3;
+  --muted:#5B6676;
+  --line:#CDD2D9;
+  --ok:#1B7F54;
+  --bad:#C2412D;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+/* Author rules like label{display:grid} would otherwise override the hidden attribute */
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--concrete);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+/* Pages set a narrower --w on .wrap; the header always uses the full width */
+.wrap{width:min(var(--w,1160px),100% - 2.5rem);margin-inline:auto}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--ink);color:#fff;border-bottom:4px solid var(--hivis)}
+.top .wrap{--w:1160px;display:flex;align-items:center;justify-content:space-between;gap:1rem;height:64px}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:800;font-stretch:80%;font-size:1.3rem;letter-spacing:.01em}
+.logo svg{width:30px;height:30px;flex:none}
+.back{text-decoration:none;font-weight:500;font-size:.95rem;opacity:.85;white-space:nowrap}
+.back:hover{opacity:1}
+@media (max-width:420px){.logo{font-size:1.05rem;gap:.45rem;line-height:1.05}.logo svg{width:24px;height:24px}}
+
+/* Footer */
+footer{background:var(--ink);color:#AEB7C4;font-size:.92rem}
+.foot-contact a{color:#fff;text-decoration:none;border-bottom:2px solid var(--hivis)}
+.foot-link{color:#fff}
+</style>
+<style>
+.wrap{--w:760px}
+body{min-height:100vh;display:flex;flex-direction:column}
+
+.intro{background:var(--ink);color:#fff;padding:3rem 0 4.5rem}
+.intro h1{font-family:var(--display);font-weight:900;font-stretch:72%;font-size:clamp(2.4rem,7vw,4.2rem);line-height:.95;margin:0 0 .8rem}
+.intro p{color:#D6DBE3;font-size:1.1rem;max-width:50ch;margin:0}
+
+main{flex:1}
+.panel{margin:-2.5rem auto 4rem;background:var(--paper);border:2px solid var(--ink);border-radius:4px;box-shadow:10px 10px 0 var(--hivis);padding:clamp(1.3rem,4vw,2.4rem)}
+.panel h2{font-family:var(--display);font-weight:800;font-stretch:85%;font-size:1.5rem;line-height:1.1;margin:2rem 0 .6rem}
+.panel h2:first-child{margin-top:0}
+.panel p{margin:0 0 1rem}
+.panel p:last-child{margin-bottom:0}
+
+footer{padding:2rem 0;text-align:center}
+.foot-contact{margin:0 0 .5rem}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="The Business Builder home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect x="10" y="62" width="80" height="22" fill="#FFC72C"/><rect x="22" y="38" width="56" height="20" fill="#FFC72C"/><rect x="34" y="16" width="32" height="18" fill="#FFC72C"/></svg>
+      THE BUSINESS BUILDER
+    </a>
+    <a class="back" href="index.html">Back to home</a>
+  </div>
+</header>
+
+<div class="intro">
+  <div class="wrap">
+    <h1>Your privacy</h1>
+    <p>What we collect, why, and who sees it. Last updated October 3, 2026.</p>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="panel">
+    <h2>What we collect</h2>
+    <p>If you request a free assessment, you give us your name, role, email and phone number, and how and when you'd like us to reach you. You also tell us your business name, type, city and service area, links and details for your website and online profiles, your goals, budget and timeline, and any notes you add.</p>
+    <p>The scorecard on the home page and the quiz don't send anything to us on their own. If you go on to the assessment, your quiz answers travel with you in the page address and are filled into the notes field.</p>
+
+    <h2>How your request reaches us</h2>
+    <p>The assessment form opens your email app with your answers filled in. Nothing is sent until you press send there, and it then arrives in our inbox at <a href="mailto:andrew@thebusinessbuilder.tech">andrew@thebusinessbuilder.tech</a>.</p>
+
+    <h2>How we use it</h2>
+    <p>We use it to prepare your assessment, reply to you and, if you choose to work with us, set up your project. We don't sell your information.</p>
+
+    <h2>Who else is involved</h2>
+    <p>This site is hosted on Cloudflare, which handles normal web traffic data, such as your IP address, to deliver pages. Fonts load from Google Fonts, so Google also receives your IP address when a page loads. Your email provider and ours carry the message you send. We don't run analytics or advertising trackers on this site.</p>
+
+    <h2>Your choices</h2>
+    <p>Email us any time to see, correct or delete what you've sent us.</p>
+
+    <h2>Contact</h2>
+    <p>The Business Builder, <a href="mailto:andrew@thebusinessbuilder.tech">andrew@thebusinessbuilder.tech</a></p>
+  </div>
+</main>
+
+<footer><p class="foot-contact"><a href="tel:+15039309141">503-930-9141</a> &middot; <a href="mailto:andrew@thebusinessbuilder.tech">andrew@thebusinessbuilder.tech</a></p>Build It. Brand It. Grow It. &copy; <span id="yr"></span> The Business Builder &middot; <a class="foot-link" href="privacy.html">Privacy</a></footer>
+
+<script>
+document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

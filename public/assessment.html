@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Digital Presence Assessment | The Business Builder</title>
+<meta name="description" content="Request your free Digital Presence Assessment from The Business Builder.">
+<meta property="og:title" content="Free Digital Presence Assessment | The Business Builder">
+<meta property="og:description" content="Request your free Digital Presence Assessment from The Business Builder.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Business Builder">
+<meta property="og:url" content="https://thebisbuilder.com/assessment">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://thebisbuilder.com/assessment">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2315202E'/><rect x='22' y='58' width='56' height='16' fill='%23FFC72C'/><rect x='30' y='40' width='40' height='14' fill='%23FFC72C'/><rect x='38' y='24' width='24' height='12' fill='%23FFC72C'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Shared by every page. build.mjs inlines this into each page for the worker. */
+:root{
+  --ink:#15202E;
+  --steel:#2E3B4E;
+  --concrete:#E9EBEE;
+  --paper:#FFFFFF;
+  --hivis:#FFC72C;
+  --blue:#2B59C3;
+  --muted:#5B6676;
+  --line:#CDD2D9;
+  --ok:#1B7F54;
+  --bad:#C2412D;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+/* Author rules like label{display:grid} would otherwise override the hidden attribute */
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--concrete);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+/* Pages set a narrower --w on .wrap; the header always uses the full width */
+.wrap{width:min(var(--w,1160px),100% - 2.5rem);margin-inline:auto}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--ink);color:#fff;border-bottom:4px solid var(--hivis)}
+.top .wrap{--w:1160px;display:flex;align-items:center;justify-content:space-between;gap:1rem;height:64px}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:800;font-stretch:80%;font-size:1.3rem;letter-spacing:.01em}
+.logo svg{width:30px;height:30px;flex:none}
+.back{text-decoration:none;font-weight:500;font-size:.95rem;opacity:.85;white-space:nowrap}
+.back:hover{opacity:1}
+@media (max-width:420px){.logo{font-size:1.05rem;gap:.45rem;line-height:1.05}.logo svg{width:24px;height:24px}}
+
+/* Footer */
+footer{background:var(--ink);color:#AEB7C4;font-size:.92rem}
+.foot-contact a{color:#fff;text-decoration:none;border-bottom:2px solid var(--hivis)}
+.foot-link{color:#fff}
+</style>
+<style>
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px)}
+.wrap{--w:860px}
+
+
+.intro{background:var(--ink);color:#fff;padding:3.5rem 0 4.5rem}
+.intro h1{font-family:var(--display);font-weight:900;font-stretch:72%;font-size:clamp(2.6rem,7vw,4.6rem);line-height:.95;margin:0 0 1rem}
+.intro p{color:#D6DBE3;font-size:1.15rem;max-width:52ch;margin:0}
+
+form{margin:-2.5rem auto 4rem;background:var(--paper);border:2px solid var(--ink);border-radius:4px;box-shadow:10px 10px 0 var(--hivis);padding:clamp(1.3rem,4vw,2.5rem)}
+fieldset{border:0;margin:0;padding:0 0 2rem;margin-bottom:2rem;border-bottom:1px solid var(--line);display:grid;gap:1.1rem}
+fieldset:last-of-type{border-bottom:0;margin-bottom:0}
+legend{display:flex;align-items:baseline;gap:.8rem;font-family:var(--display);font-weight:800;font-stretch:85%;font-size:1.6rem;line-height:1.1;padding:0;margin-bottom:1.2rem}
+legend span{display:inline-grid;place-items:center;width:2rem;height:2rem;background:var(--hivis);border:2px solid var(--ink);font-size:1.1rem;font-stretch:100%;flex:none}
+.hint{margin:-.6rem 0 0;color:var(--muted);font-size:.95rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media (max-width:600px){.row{grid-template-columns:1fr}}
+label,.q{display:grid;gap:.35rem;font-weight:600;font-size:.94rem}
+.req::after{content:" *";color:var(--bad)}
+.opt{font-weight:400;color:var(--muted)}
+input,select,textarea{font:inherit;font-weight:400;font-size:1rem;padding:.75rem .8rem;border:1.5px solid var(--line);border-radius:3px;background:#fff;color:var(--ink);width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--blue);outline:2px solid var(--blue);outline-offset:0}
+input[aria-invalid="true"],select[aria-invalid="true"]{border-color:var(--bad)}
+textarea{min-height:110px;resize:vertical}
+
+/* Presence grid */
+.presence{border-top:1px solid var(--line)}
+.p-row{display:grid;grid-template-columns:1fr auto;gap:.6rem 1rem;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.p-row .name{font-weight:600;font-size:.97rem}
+.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:3px;overflow:hidden}
+.seg label{display:block;font-weight:600;font-size:.82rem}
+.seg input{position:absolute;opacity:0;width:1px;height:1px}
+.seg span{display:block;padding:.45rem .7rem;cursor:pointer;background:#fff}
+.seg label+label span{border-left:1.5px solid var(--ink)}
+.seg input:checked+span{background:var(--ink);color:#fff}
+.seg input[value="Yes"]:checked+span{background:var(--ok)}
+.seg input[value="No"]:checked+span{background:var(--bad)}
+.seg input:focus-visible+span{outline:3px solid var(--blue);outline-offset:-3px}
+.p-row .detail{grid-column:1/-1;display:none}
+.p-row.show .detail{display:block}
+@media (max-width:480px){.p-row{grid-template-columns:1fr}}
+
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1rem}
+@media (max-width:600px){.checks{grid-template-columns:1fr}}
+.checks label{display:flex;align-items:center;gap:.6rem;font-weight:500;cursor:pointer}
+.checks input{width:1.15rem;height:1.15rem;accent-color:var(--ink);flex:none}
+
+.hp{position:absolute;left:-9999px}
+.submit{display:grid;gap:.8rem;justify-items:start}
+.btn{display:inline-block;font:700 1.1rem/1 var(--body);text-decoration:none;padding:1.1rem 1.8rem;border:2px solid var(--ink);background:var(--hivis);color:var(--ink);cursor:pointer;border-radius:3px;box-shadow:5px 5px 0 var(--ink);transition:transform .12s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.btn[disabled]{opacity:.6;cursor:wait}
+.small{font-size:.9rem;color:var(--muted);margin:0}
+.status{margin:0;font-weight:600;min-height:1.4em}
+.status.err{color:var(--bad)}
+
+.done{display:none;text-align:center;padding:2rem 0}
+.done h2{font-family:var(--display);font-weight:900;font-stretch:78%;font-size:clamp(2rem,5vw,3rem);line-height:1;margin:0 0 1rem}
+.done p{color:var(--muted);max-width:46ch;margin:0 auto 1.5rem}
+form.sent>*:not(.done){display:none}
+form.sent .done{display:block}
+
+footer{padding:2rem 0;text-align:center}
+.foot-contact{margin:0 0 .5rem}
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="The Business Builder home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect x="10" y="62" width="80" height="22" fill="#FFC72C"/><rect x="22" y="38" width="56" height="20" fill="#FFC72C"/><rect x="34" y="16" width="32" height="18" fill="#FFC72C"/></svg>
+      THE BUSINESS BUILDER
+    </a>
+    <a class="back" href="index.html">Back to home</a>
+  </div>
+</header>
+
+<div class="intro">
+  <div class="wrap">
+    <h1>Your free Digital Presence Assessment</h1>
+    <p>Tell us about your business and where you stand online. We'll review everything and send you a scorecard showing what's working, what's missing and what to fix first. It takes about 3 minutes.</p>
+  </div>
+</div>
+
+<main class="wrap">
+  <form id="assessForm" novalidate>
+
+    <fieldset>
+      <legend><span>1</span>About you</legend>
+      <div class="row">
+        <label><span class="req">Your name</span><input name="Owner name" autocomplete="name" required></label>
+        <label>Your role<select name="Role"><option>Owner</option><option>Co-owner / partner</option><option>Manager</option><option>Other</option></select></label>
+      </div>
+      <div class="row">
+        <label><span class="req">Email</span><input name="Email" type="email" autocomplete="email" required></label>
+        <label><span class="req">Phone</span><input name="Phone" type="tel" autocomplete="tel" required></label>
+      </div>
+      <div class="row">
+        <label>Best way to reach you<select name="Preferred contact"><option>Phone call</option><option>Text</option><option>Email</option></select></label>
+        <label>Best time to reach you<select name="Best time"><option>Anytime</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend><span>2</span>Your business</legend>
+      <div class="row">
+        <label><span class="req">Business name</span><input name="Business name" autocomplete="organization" required></label>
+        <label><span class="req">Type of business</span>
+          <select name="Business type" id="btype" required>
+            <option value="">Choose one</option>
+            <optgroup label="Home &amp; trade services"><option>Cleaning</option><option>Landscaping</option><option>Handyman</option><option>Contractor</option><option>Plumbing</option><option>Electrical</option><option>Painting</option></optgroup>
+            <optgroup label="Mobile &amp; specialty"><option>Auto detailing</option><option>Mobile mechanic</option><option>Moving</option><option>Pressure washing</option></optgroup>
+            <optgroup label="Professional services"><option>Notary</option><option>Tax preparation</option><option>Insurance</option><option>Real estate</option><option>Consulting</option><option>Bookkeeping</option></optgroup>
+            <optgroup label="Personal &amp; retail"><option>Salon / beauty</option><option>Barber</option><option>Restaurant</option><option>Food truck</option><option>Boutique</option><option>Photography</option><option>Personal training</option></optgroup>
+            <option>Other</option>
+          </select>
+        </label>
+      </div>
+      <label id="otherWrap" hidden>What kind of business?<input name="Business type (other)"></label>
+      <div class="row">
+        <label><span class="req">City and state</span><input name="City/State" autocomplete="address-level2" required></label>
+        <label>Area you serve <span class="opt">(optional)</span><input name="Service area" placeholder="e.g. 25 miles around Portland"></label>
+      </div>
+      <div class="row">
+        <label>How long have you been in business?<select name="Years in business"><option>Just starting</option><option>Less than 1 year</option><option>1–3 years</option><option>3–10 years</option><option>10+ years</option></select></label>
+        <label>How do most customers find you now?<select name="Current lead source"><option>Word of mouth / referrals</option><option>Google search</option><option>Facebook / Instagram</option><option>Yelp / Angi / Thumbtack</option><option>Walk-ins / drive-by</option><option>Not sure</option></select></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend><span>3</span>Where you are online today</legend>
+      <p class="hint">Mark what you have. For anything you have, add the link or details so we can review it.</p>
+      <div class="presence" id="presence"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend><span>4</span>Your goals</legend>
+      <div class="q">What do you want more of?
+        <div class="checks">
+          <label><input type="checkbox" name="Goals" value="Phone calls">Phone calls</label>
+          <label><input type="checkbox" name="Goals" value="Bookings / appointments">Bookings or appointments</label>
+          <label><input type="checkbox" name="Goals" value="Quote requests">Quote requests</label>
+          <label><input type="checkbox" name="Goals" value="Foot traffic">Foot traffic</label>
+          <label><input type="checkbox" name="Goals" value="More reviews">More reviews</label>
+          <label><input type="checkbox" name="Goals" value="Look more professional">Look more professional</label>
+        </div>
+      </div>
+      <label>What's your biggest online headache right now?<textarea name="Biggest problem" id="problem" placeholder="e.g. My website is 8 years old and I don't show up on Google Maps."></textarea></label>
+      <div class="row">
+        <label>Package you're interested in
+          <select name="Package interest" id="pkg">
+            <option>Not sure yet. Recommend one for me.</option>
+            <option>BUILD</option><option>GROW</option><option>BUILD + GROW</option>
+            <option>Website Care</option><option>Website Care Plus</option><option>Advertising Management</option>
+          </select>
+        </label>
+        <label>Monthly marketing budget
+          <select name="Monthly budget"><option>Not sure yet</option><option>Under $200</option><option>$200–$400</option><option>$400–$700</option><option>$700+</option></select>
+        </label>
+      </div>
+      <div class="row">
+        <label>When do you want to get started?<select name="Timeline"><option>As soon as possible</option><option>Within a month</option><option>1–3 months</option><option>Just exploring</option></select></label>
+        <label>Anything else we should know? <span class="opt">(optional)</span><input name="Notes"></label>
+      </div>
+    </fieldset>
+
+    <input class="hp" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <div class="submit">
+      <button class="btn" type="submit" id="submitBtn">Send my assessment request</button>
+      <p class="status" id="status" role="status"></p>
+      <p class="small">It's free, with no obligation. We'll only use your information to prepare your assessment. <a href="privacy.html">How we handle it</a>.</p>
+    </div>
+
+    <div class="done" tabindex="-1" id="done">
+      <h2>Request received.</h2>
+      <p>We'll review your business online and reach out within one business day with your scorecard.</p>
+      <a class="btn" href="index.html">Back to home</a>
+    </div>
+  </form>
+</main>
+
+<footer><p class="foot-contact"><a href="tel:+15039309141">503-930-9141</a> &middot; <a href="mailto:andrew@thebusinessbuilder.tech">andrew@thebusinessbuilder.tech</a></p>Build It. Brand It. Grow It. &copy; <span id="yr"></span> The Business Builder &middot; <a class="foot-link" href="privacy.html">Privacy</a></footer>
+
+<script>
+/* ===== SETTINGS: change these ===== */
+const CONTACT_EMAIL = "andrew@thebusinessbuilder.tech";
+/* ================================== */
+
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+// Presence checklist (matches the scorecard on the home page)
+const presence = [
+  {key:"Website", detail:"Website address", ph:"yourbusiness.com"},
+  {key:"Google Business Profile", detail:"Google rating and number of reviews", ph:"e.g. 4.6 stars, 23 reviews"},
+  {key:"Facebook", detail:"Facebook page link", ph:"facebook.com/yourbusiness"},
+  {key:"Instagram", detail:"Instagram handle", ph:"@yourbusiness"},
+  {key:"Local search visibility", detail:"What would a customer search to find you?", ph:"e.g. plumber near Portland"},
+  {key:"Online reviews", detail:"Where are your reviews?", ph:"e.g. Google, Yelp, Facebook"},
+  {key:"Mobile-friendly website", detail:null}
+];
+const box = document.getElementById("presence");
+presence.forEach((p, i) => {
+  const row = document.createElement("div");
+  row.className = "p-row";
+  row.innerHTML = `<span class="name" id="pl${i}">${p.key}</span>
+    <span class="seg" role="radiogroup" aria-labelledby="pl${i}">
+      ${["Yes","No","Not sure"].map(v => `<label><input type="radio" name="${p.key}" value="${v}"><span>${v === "Yes" ? "Have it" : v === "No" ? "Missing" : "Not sure"}</span></label>`).join("")}
+    </span>
+    ${p.detail ? `<label class="detail">${p.detail}<input name="${p.key} details" placeholder="${p.ph}"></label>` : ""}`;
+  row.querySelectorAll('input[type=radio]').forEach(r => r.addEventListener("change", () => {
+    row.classList.toggle("show", r.value === "Yes" && r.checked);
+  }));
+  box.appendChild(row);
+});
+
+// Show "other" field
+const btype = document.getElementById("btype");
+btype.addEventListener("change", () => document.getElementById("otherWrap").hidden = btype.value !== "Other");
+
+// Prefill from the home page (package button or scorecard)
+const params = new URLSearchParams(location.search);
+if (params.get("package")) document.getElementById("pkg").value = params.get("package");
+if (params.get("missing")) {
+  params.get("missing").split("|").forEach(name => {
+    const r = document.querySelector(`input[type=radio][name="${CSS.escape(name)}"][value="No"]`);
+    if (r) r.checked = true;
+  });
+}
+
+// Prefill from the quiz
+if (params.get("goals")) params.get("goals").split("|").forEach(g => {
+  const c = document.querySelector(`input[name="Goals"][value="${CSS.escape(g)}"]`);
+  if (c) c.checked = true;
+});
+if (params.get("quiz")) document.querySelector('input[name="Notes"]').value = "Quiz answers: " + params.get("quiz");
+
+// Submit
+const form = document.getElementById("assessForm");
+const status = document.getElementById("status");
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  if (form.company_url.value) return; // spam trap
+
+  let firstBad = null;
+  form.querySelectorAll("[required]").forEach(f => {
+    const bad = !f.value.trim() || (f.type === "email" && !/^\S+@\S+\.\S+$/.test(f.value));
+    f.setAttribute("aria-invalid", bad);
+    if (bad && !firstBad) firstBad = f;
+  });
+  if (firstBad) {
+    status.className = "status err";
+    status.textContent = "Please fill in the fields marked with *.";
+    firstBad.focus();
+    return;
+  }
+
+  const fd = new FormData(form);
+  fd.delete("company_url");
+  const data = {};
+  for (const [k, v] of fd.entries()) {
+    if (!v) continue;
+    data[k] = data[k] ? data[k] + ", " + v : v;
+  }
+
+  const btn = document.getElementById("submitBtn");
+  btn.disabled = true; status.className = "status"; status.textContent = "Sending...";
+  try {
+    const r = await fetch("/api/contact", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({fields: data})});
+    if (!r.ok) throw new Error();
+    form.classList.add("sent");
+    document.getElementById("done").focus();
+    window.scrollTo(0, 0);
+  } catch {
+    status.className = "status err";
+    status.textContent = `That didn't go through. Call 503-930-9141, email ${CONTACT_EMAIL}, or try again.`;
+  } finally { btn.disabled = false; }
+});
+</script>
+</body>
+</html>

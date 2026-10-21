@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>5 Questions: What Does Your Business Need Online? | The Business Builder</title>
+<meta name="description" content="Answer 5 quick questions to find out what your business needs online and whether you qualify for a free full assessment.">
+<meta property="og:title" content="5 Questions: What Does Your Business Need Online? | The Business Builder">
+<meta property="og:description" content="Answer 5 quick questions to find out what your business needs online and whether you qualify for a free full assessment.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Business Builder">
+<meta property="og:url" content="https://thebisbuilder.com/quiz">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://thebisbuilder.com/quiz">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2315202E'/><rect x='22' y='58' width='56' height='16' fill='%23FFC72C'/><rect x='30' y='40' width='40' height='14' fill='%23FFC72C'/><rect x='38' y='24' width='24' height='12' fill='%23FFC72C'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Shared by every page. build.mjs inlines this into each page for the worker. */
+:root{
+  --ink:#15202E;
+  --steel:#2E3B4E;
+  --concrete:#E9EBEE;
+  --paper:#FFFFFF;
+  --hivis:#FFC72C;
+  --blue:#2B59C3;
+  --muted:#5B6676;
+  --line:#CDD2D9;
+  --ok:#1B7F54;
+  --bad:#C2412D;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+/* Author rules like label{display:grid} would otherwise override the hidden attribute */
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--concrete);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+/* Pages set a narrower --w on .wrap; the header always uses the full width */
+.wrap{width:min(var(--w,1160px),100% - 2.5rem);margin-inline:auto}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--ink);color:#fff;border-bottom:4px solid var(--hivis)}
+.top .wrap{--w:1160px;display:flex;align-items:center;justify-content:space-between;gap:1rem;height:64px}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:800;font-stretch:80%;font-size:1.3rem;letter-spacing:.01em}
+.logo svg{width:30px;height:30px;flex:none}
+.back{text-decoration:none;font-weight:500;font-size:.95rem;opacity:.85;white-space:nowrap}
+.back:hover{opacity:1}
+@media (max-width:420px){.logo{font-size:1.05rem;gap:.45rem;line-height:1.05}.logo svg{width:24px;height:24px}}
+
+/* Footer */
+footer{background:var(--ink);color:#AEB7C4;font-size:.92rem}
+.foot-contact a{color:#fff;text-decoration:none;border-bottom:2px solid var(--hivis)}
+.foot-link{color:#fff}
+</style>
+<style>
+body{min-height:100vh;display:flex;flex-direction:column}
+.wrap{--w:760px}
+
+
+.intro{background:var(--ink);color:#fff;padding:3rem 0 4.5rem}
+.intro h1{font-family:var(--display);font-weight:900;font-stretch:72%;font-size:clamp(2.4rem,7vw,4.2rem);line-height:.95;margin:0 0 .8rem}
+.intro .eyebrow{font-family:var(--display);font-stretch:125%;font-weight:700;font-size:1rem;color:var(--hivis);margin:0 0 .8rem}
+.intro p{color:#D6DBE3;font-size:1.1rem;max-width:50ch;margin:0}
+
+main{flex:1}
+.panel{margin:-2.5rem auto 4rem;background:var(--paper);border:2px solid var(--ink);border-radius:4px;box-shadow:10px 10px 0 var(--hivis);padding:clamp(1.3rem,4vw,2.4rem)}
+
+.progress{display:flex;gap:6px;margin-bottom:1.6rem}
+.progress span{flex:1;height:8px;background:var(--concrete);border-radius:1px;transition:background .25s}
+.progress span.done{background:var(--ink)}
+.progress span.now{background:var(--hivis)}
+.count{font-weight:600;color:var(--muted);font-size:.92rem;margin:0 0 .4rem}
+.q h2{font-family:var(--display);font-weight:800;font-stretch:85%;font-size:clamp(1.6rem,4vw,2.1rem);line-height:1.1;margin:0 0 .5rem}
+.q .why{color:var(--muted);margin:0 0 1.4rem;font-size:.97rem}
+
+.opts{display:grid;gap:.7rem}
+.opt{display:flex;align-items:flex-start;gap:.9rem;width:100%;text-align:left;font:inherit;background:#fff;color:var(--ink);border:2px solid var(--line);border-radius:4px;padding:1rem 1.1rem;cursor:pointer;transition:border-color .12s, background .12s}
+.opt:hover{border-color:var(--ink)}
+.opt[aria-pressed="true"]{border-color:var(--ink);background:#FFF6D6}
+.opt .box{flex:none;width:1.3rem;height:1.3rem;border:2px solid var(--ink);margin-top:.15rem;display:grid;place-items:center}
+.opt[aria-pressed="true"] .box{background:var(--ink)}
+.opt[aria-pressed="true"] .box::after{content:"";width:.45rem;height:.45rem;background:var(--hivis)}
+.opt b{display:block;font-weight:700}
+.opt small{display:block;color:var(--muted);font-size:.92rem;line-height:1.45;margin-top:.15rem}
+.multi-note{font-size:.9rem;color:var(--muted);margin:.8rem 0 0}
+
+.nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:1.8rem}
+.btn{display:inline-block;font:700 1.05rem/1 var(--body);text-decoration:none;padding:1rem 1.6rem;border:2px solid var(--ink);background:var(--hivis);color:var(--ink);cursor:pointer;border-radius:3px;box-shadow:5px 5px 0 var(--ink);transition:transform .12s}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+.link{background:none;border:0;font:600 1rem var(--body);color:var(--ink);text-decoration:underline;cursor:pointer;padding:.5rem 0}
+.link[hidden]{display:none}
+
+/* Results */
+.result{display:none}
+.panel.finished .quiz{display:none}
+.panel.finished .result{display:block}
+.badge{display:inline-block;font-weight:700;font-size:.9rem;padding:.35rem .7rem;border:2px solid var(--ink);margin-bottom:1rem}
+.badge.yes{background:var(--ok);color:#fff;border-color:var(--ok)}
+.badge.no{background:var(--concrete)}
+.result h2{font-family:var(--display);font-weight:900;font-stretch:78%;font-size:clamp(2rem,5vw,3rem);line-height:1;margin:0 0 1rem}
+.result > p{color:var(--muted);margin:0 0 1.6rem;max-width:56ch}
+.needs{list-style:none;margin:0 0 1.8rem;padding:0;border-top:1px solid var(--line)}
+.needs li{padding:.8rem 0 .8rem 2rem;border-bottom:1px solid var(--line);position:relative}
+.needs li::before{content:"";position:absolute;left:0;top:1.15rem;width:.9rem;height:.9rem;background:var(--hivis);border:2px solid var(--ink)}
+.needs b{display:block}
+.needs span{color:var(--muted);font-size:.95rem}
+.rec{background:var(--ink);color:#fff;border-radius:4px;padding:1.3rem 1.4rem;margin-bottom:1.8rem}
+.rec p{margin:0;color:#D6DBE3}
+.rec strong{display:block;font-family:var(--display);font-weight:800;font-stretch:85%;font-size:1.5rem;color:var(--hivis);margin-bottom:.2rem}
+.actions{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+
+.bottom-cta{background:var(--steel);color:#fff;padding:3rem 0;text-align:center}
+.bottom-cta h2{font-family:var(--display);font-weight:900;font-stretch:78%;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1;margin:0 0 .6rem}
+.bottom-cta p{color:#C3CAD5;margin:0 auto 1.6rem;max-width:46ch}
+
+footer{padding:2rem 0;text-align:center}
+.foot-contact{margin:0 0 .5rem}
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="The Business Builder home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect x="10" y="62" width="80" height="22" fill="#FFC72C"/><rect x="22" y="38" width="56" height="20" fill="#FFC72C"/><rect x="34" y="16" width="32" height="18" fill="#FFC72C"/></svg>
+      THE BUSINESS BUILDER
+    </a>
+    <a class="back" href="index.html">Back to home</a>
+  </div>
+</header>
+
+<div class="intro">
+  <div class="wrap">
+    <p class="eyebrow">Take the quiz!</p>
+    <h1>What does your business need online?</h1>
+    <p>Answer 5 quick questions about your business and your website. At the end, you'll see what your business needs and whether you qualify for a free full assessment.</p>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="panel" id="panel">
+    <div class="quiz">
+      <div class="progress" id="progress" aria-hidden="true"></div>
+      <div class="q" id="q" aria-live="polite"></div>
+      <div class="nav">
+        <button class="link" id="prev" type="button" hidden>Back</button>
+        <button class="btn" id="next" type="button" disabled>Next question</button>
+      </div>
+    </div>
+
+    <div class="result" id="result" tabindex="-1"></div>
+  </div>
+</main>
+
+<section class="bottom-cta">
+  <div class="wrap">
+    <h2>Rather skip the quiz?</h2>
+    <p>Go straight to your free full assessment. We'll review your business online and send you a scorecard showing what to fix first.</p>
+    <a class="btn" href="assessment.html" id="bottomCta">Go to the full assessment</a>
+  </div>
+</section>
+
+<footer><p class="foot-contact"><a href="tel:+15039309141">503-930-9141</a> &middot; <a href="mailto:andrew@thebusinessbuilder.tech">andrew@thebusinessbuilder.tech</a></p>Build It. Brand It. Grow It. &copy; <span id="yr"></span> The Business Builder &middot; <a class="foot-link" href="privacy.html">Privacy</a></footer>
+
+<script>
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+/* Each answer can add a "need" shown on the results page, and "gap" points.
+   gap > 0 means The Business Builder can help with it. "block" means not a fit. */
+const questions = [
+  {
+    title: "What kind of business do you run?",
+    why: "This tells us what your customers search for and what your site has to show them.",
+    options: [
+      {label:"Home or trade service", sub:"Cleaning, landscaping, plumbing, electrical, contracting, painting", gap:1, tag:"trade"},
+      {label:"Mobile or specialty service", sub:"Detailing, mobile mechanic, moving, pressure washing", gap:1, tag:"mobile"},
+      {label:"Professional service", sub:"Tax prep, insurance, real estate, notary, bookkeeping, consulting", gap:1, tag:"pro"},
+      {label:"Personal, food or retail", sub:"Salon, barber, restaurant, food truck, boutique, photographer, trainer", gap:1, tag:"retail"},
+      {label:"A larger company with its own marketing team", sub:"50+ employees or an in-house web and marketing staff", gap:0, block:true, tag:"large"}
+    ]
+  },
+  {
+    title: "Where does your website stand today?",
+    why: "Your website is where people decide whether to call you or the next business on the list.",
+    options: [
+      {label:"I don't have a website", sub:"Or I only have a Facebook page", gap:3, need:["A professional website","Customers who search for you have nowhere to land, so they call someone else."], site:"none", missing:"Website"},
+      {label:"I have one, but it's outdated", sub:"Old design, hard to update, or looks bad on phones", gap:2, need:["A modern, mobile-friendly rebuild","Most local searches happen on a phone. An outdated site costs you trust and calls."], site:"old", missing:"Mobile-friendly website"},
+      {label:"It looks fine, but it doesn't bring in customers", sub:"Few calls, forms or bookings come from it", gap:2, need:["A site built to get calls","Clear click-to-call, contact forms and local SEO turn visitors into customers."], site:"ok"},
+      {label:"It's strong and brings in steady business", sub:"Up to date and producing leads", gap:0, site:"strong"}
+    ]
+  },
+  {
+    title: "When someone searches for your service nearby, do they find you?",
+    why: "Google Maps and local results are where most small businesses win or lose new customers.",
+    options: [
+      {label:"No, or I'm not sure", sub:"I don't have a Google Business Profile, or I've never checked", gap:3, need:["Google Business Profile and local SEO","If you're not on Google Maps, you're invisible to people ready to hire today."], missing:"Google Business Profile"},
+      {label:"I'm on Google, but have few or no reviews", sub:"Under 20 reviews, or an average below 4 stars", gap:2, need:["A steady flow of reviews","Reviews are the first thing people compare. We set up a simple system to ask for them."], missing:"Online reviews"},
+      {label:"I show up, but below my competitors", sub:"Page 2, or not in the top 3 map results", gap:2, need:["Local SEO to move you up","Small, consistent updates to your profile and site push you above competitors."], missing:"Local search visibility"},
+      {label:"I'm at the top of local results", sub:"Top 3 on Google Maps with strong reviews", gap:0}
+    ]
+  },
+  {
+    title: "What do you need your website to do for you?",
+    why: "This tells us which features your site needs. Pick all that apply.",
+    multi: true,
+    options: [
+      {label:"Get phone calls and quote requests", sub:"Click-to-call, quote forms and service area pages", goal:"Quote requests", feature:"click-to-call buttons with quote forms"},
+      {label:"Take bookings or appointments", sub:"Online scheduling customers can use any time", goal:"Bookings / appointments", feature:"online booking"},
+      {label:"Show my work and build trust", sub:"Photo gallery, reviews and before-and-after shots", goal:"Look more professional", feature:"a gallery of your work with customer reviews"},
+      {label:"Bring people through my door", sub:"Hours, location, menu or services", goal:"Foot traffic", feature:"your hours and location"},
+      {label:"Sell products online", sub:"Online store and payments", goal:"Look more professional", feature:"an online store"}
+    ]
+  },
+  {
+    title: "Who handles your online presence right now?",
+    why: "This helps us see how much you'd like to hand off.",
+    options: [
+      {label:"Nobody. I don't have time for it.", sub:"It's on my to-do list but never gets done", gap:2, need:["Someone to run it for you","Ongoing updates, posts and reviews handled every month, with a simple report."], care:"full"},
+      {label:"I do it myself when I can", sub:"Posts and updates only happen on slow days", gap:2, need:["Your time back","Hand off the posting, updates and SEO so you can focus on the work."], care:"full"},
+      {label:"A friend or family member helps out", sub:"Someone who knows a bit about websites", gap:1, need:["Dependable, professional support","Updates, security and backups that don't depend on someone's free time."], care:"some"},
+      {label:"A staff member or agency handles it well", sub:"We're happy with how it's going", gap:0, care:"none"}
+    ]
+  }
+];
+
+const answers = questions.map(q => q.multi ? [] : null);
+let step = 0;
+
+const params = new URLSearchParams(location.search);
+const scorecardMissing = params.get("missing") ? params.get("missing").split("|") : [];
+
+const progress = document.getElementById("progress");
+questions.forEach(() => progress.appendChild(document.createElement("span")));
+const qEl = document.getElementById("q");
+const next = document.getElementById("next");
+const prev = document.getElementById("prev");
+
+function renderQuestion(){
+  const q = questions[step];
+  [...progress.children].forEach((s, i) => s.className = i < step ? "done" : i === step ? "now" : "");
+  qEl.innerHTML = `<p class="count">Question ${step + 1} of ${questions.length}</p>
+    <h2 id="qt">${q.title}</h2><p class="why">${q.why}</p>
+    <div class="opts" role="group" aria-labelledby="qt">
+      ${q.options.map((o, i) => `<button type="button" class="opt" data-i="${i}" aria-pressed="${isPicked(i)}"><span class="box"></span><span><b>${o.label}</b><small>${o.sub}</small></span></button>`).join("")}
+    </div>
+    ${q.multi ? '<p class="multi-note">Choose as many as you like.</p>' : ""}`;
+  qEl.querySelectorAll(".opt").forEach(b => b.addEventListener("click", () => pick(+b.dataset.i)));
+  prev.hidden = step === 0;
+  next.textContent = step === questions.length - 1 ? "See my results" : "Next question";
+  updateNext();
+}
+function isPicked(i){ const a = answers[step]; return Array.isArray(a) ? a.includes(i) : a === i; }
+function pick(i){
+  const q = questions[step];
+  if (q.multi) {
+    const a = answers[step];
+    a.includes(i) ? a.splice(a.indexOf(i), 1) : a.push(i);
+  } else answers[step] = i;
+  qEl.querySelectorAll(".opt").forEach(b => b.setAttribute("aria-pressed", isPicked(+b.dataset.i)));
+  updateNext();
+  // Single-choice questions advance on their own after a short pause, except the last,
+  // so a misclick can be changed before pressing "See my results"
+  if (!q.multi && step < questions.length - 1) setTimeout(() => { if (answers[step] === i) go(1); }, 280);
+}
+function updateNext(){
+  const a = answers[step];
+  next.disabled = Array.isArray(a) ? a.length === 0 : a === null;
+}
+function go(dir){
+  if (dir > 0 && next.disabled) return;
+  if (dir > 0 && step === questions.length - 1) return showResult();
+  step = Math.max(0, Math.min(questions.length - 1, step + dir));
+  renderQuestion();
+}
+next.addEventListener("click", () => go(1));
+prev.addEventListener("click", () => go(-1));
+
+function showResult(){
+  const picked = questions.map((q, i) => q.multi ? answers[i].map(x => q.options[x]) : [q.options[answers[i]]]);
+  const flat = picked.flat();
+  const blocked = flat.some(o => o.block);
+  const gap = flat.reduce((n, o) => n + (o.gap || 0), 0);
+  const needs = flat.filter(o => o.need).map(o => o.need);
+  const features = picked[3].map(o => o.feature);
+  const site = picked[1][0].site;
+  const care = picked[4][0].care;
+
+  // Qualifies when it's a small business with at least one real gap
+  const qualifies = !blocked && gap >= 3;
+
+  // Package recommendation
+  let pkg, pkgWhy;
+  if (site === "none" || site === "old") {
+    pkg = care === "none" ? "BUILD" : "BUILD + GROW";
+    pkgWhy = care === "none"
+      ? "A new website built to get calls, with Google and social profiles set up, handed over to your team."
+      : "We build your new site and then run your Google profile, social media, reviews and SEO every month.";
+  } else if (care === "none") {
+    pkg = "Website Care Plus";
+    pkgWhy = "Your site and marketing are covered. We'd keep it secure, updated and tracking well.";
+  } else {
+    pkg = "GROW";
+    pkgWhy = "Keep your current site and let us handle Google, social media, reviews and local SEO each month.";
+  }
+
+  const res = document.getElementById("result");
+  if (qualifies) {
+    const missing = new Set([...scorecardMissing, ...flat.filter(o => o.missing).map(o => o.missing)]);
+    const goals = [...new Set(picked[3].map(o => o.goal))];
+    const summary = picked.map((opts, i) => opts.map(o => o.label).join(" / ")).join(" | ");
+    const url = "assessment.html?" + new URLSearchParams({
+      package: pkg,
+      missing: [...missing].join("|"),
+      goals: goals.join("|"),
+      quiz: summary
+    }).toString();
+
+    res.innerHTML = `<span class="badge yes">You qualify</span>
+      <h2>You qualify for a free full assessment.</h2>
+      <p>Based on your answers, here's what would bring your business more customers online.</p>
+      <ul class="needs">
+        ${needs.map(n => `<li><b>${n[0]}</b><span>${n[1]}</span></li>`).join("")}
+        ${features.length ? `<li><b>A website that does the job</b><span>Your site should include ${listJoin(features)}.</span></li>` : ""}
+      </ul>
+      <div class="rec"><strong>Recommended: ${pkg}</strong><p>${pkgWhy}</p></div>
+      <p>Your full assessment covers your website, Google profile, social pages, reviews and mobile experience, and shows you exactly what to fix first. It's free, with no obligation.</p>
+      <div class="actions">
+        <a class="btn" href="${url}">Get my full assessment</a>
+        <button class="link" type="button" onclick="restart()">Retake the quiz</button>
+      </div>`;
+  } else {
+    res.innerHTML = `<span class="badge no">Results</span>
+      <h2>${blocked ? "You may be beyond what we do." : "You're in great shape."}</h2>
+      <p>${blocked
+        ? "The Business Builder is built for small, local businesses without a dedicated marketing team. With your own team in place, you likely already have what a full assessment would cover."
+        : "Your website, Google presence and day-to-day upkeep are already covered, so a full assessment wouldn't tell you much new right now."}</p>
+      ${blocked ? "" : `<div class="rec"><strong>Worth a look: Website Care</strong><p>If you ever want backups, security and updates handled for you, Website Care starts at $129/mo. Advertising management is also available if you want more leads from Google or Facebook ads.</p></div>`}
+      <div class="actions">
+        <a class="btn" href="index.html#packages">See all packages</a>
+        <button class="link" type="button" onclick="restart()">Retake the quiz</button>
+      </div>`;
+  }
+  document.getElementById("panel").classList.add("finished");
+  window.scrollTo(0, 0);
+  res.focus();
+}
+function listJoin(a){ if (a.length < 2) return a.join(""); if (a.length === 2) return a.join(" and "); return a.slice(0, -1).join(", ") + ", and " + a[a.length - 1]; }
+function restart(){
+  questions.forEach((q, i) => answers[i] = q.multi ? [] : null);
+  step = 0;
+  document.getElementById("panel").classList.remove("finished");
+  renderQuestion();
+}
+// Bottom button carries any scorecard gaps and quiz answers given so far
+document.getElementById("bottomCta").addEventListener("click", e => {
+  const picked = questions.map((q, i) => q.multi ? answers[i].map(x => q.options[x]) : (answers[i] === null ? [] : [q.options[answers[i]]]));
+  const flat = picked.flat();
+  const missing = new Set([...scorecardMissing, ...flat.filter(o => o.missing).map(o => o.missing)]);
+  const goals = [...new Set(picked[3].map(o => o.goal))];
+  const summary = picked.map(opts => opts.map(o => o.label).join(" / ")).filter(Boolean).join(" | ");
+  const p = new URLSearchParams();
+  if (missing.size) p.set("missing", [...missing].join("|"));
+  if (goals.length) p.set("goals", goals.join("|"));
+  if (summary) p.set("quiz", summary);
+  const qs = p.toString();
+  e.currentTarget.href = "assessment.html" + (qs ? "?" + qs : "");
+});
+
+renderQuestion();
+</script>
+</body>
+</html>
