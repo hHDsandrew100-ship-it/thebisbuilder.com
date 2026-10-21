@@ -39,6 +39,8 @@
 /* Author rules like label{display:grid} would otherwise override the hidden attribute */
 [hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
 body{margin:0;background:var(--concrete);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
@@ -90,7 +92,7 @@ footer{padding:2rem 0;text-align:center}
   </div>
 </header>
 
-<div class="intro">
+<div class="intro" role="region" aria-label="Introduction">
   <div class="wrap">
     <h1>Your privacy</h1>
     <p>What we collect, why, and who sees it. Last updated October 3, 2026.</p>

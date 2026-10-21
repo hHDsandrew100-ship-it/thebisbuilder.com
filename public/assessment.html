@@ -39,6 +39,8 @@
 /* Author rules like label{display:grid} would otherwise override the hidden attribute */
 [hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
 body{margin:0;background:var(--concrete);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
@@ -93,6 +95,7 @@ textarea{min-height:110px;resize:vertical}
 .seg input{position:absolute;opacity:0;width:1px;height:1px}
 .seg span{display:block;padding:.45rem .7rem;cursor:pointer;background:#fff}
 .seg label+label span{border-left:1.5px solid var(--ink)}
+@media (pointer:coarse){.seg span{display:grid;place-items:center;min-height:44px}}
 .seg input:checked+span{background:var(--ink);color:#fff}
 .seg input[value="Yes"]:checked+span{background:var(--ok)}
 .seg input[value="No"]:checked+span{background:var(--bad)}
@@ -139,7 +142,7 @@ footer{padding:2rem 0;text-align:center}
   </div>
 </header>
 
-<div class="intro">
+<div class="intro" role="region" aria-label="Introduction">
   <div class="wrap">
     <h1>Your free Digital Presence Assessment</h1>
     <p>Tell us about your business and where you stand online. We'll review everything and send you a scorecard showing what's working, what's missing and what to fix first. It takes about 3 minutes.</p>
@@ -213,7 +216,7 @@ footer{padding:2rem 0;text-align:center}
       <div class="row">
         <label>Package you're interested in
           <select name="Package interest" id="pkg">
-            <option>Not sure yet. Recommend one for me.</option>
+            <option>Not sure, recommend one</option>
             <option>Launch</option><option>Growth</option><option>Complete</option>
             <option>Website Care</option><option>Website Care Plus</option><option>Advertising Management</option>
           </select>

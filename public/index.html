@@ -39,6 +39,8 @@
 /* Author rules like label{display:grid} would otherwise override the hidden attribute */
 [hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
 body{margin:0;background:var(--concrete);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
@@ -85,6 +87,8 @@ img,svg{max-width:100%}
 .tagline{font-family:var(--display);font-stretch:125%;font-weight:600;font-size:.95rem;color:var(--hivis);margin:0 0 1.2rem}
 h1{font-family:var(--display);font-weight:900;font-stretch:72%;font-size:clamp(3rem,8.5vw,6.2rem);line-height:.92;letter-spacing:-.01em;margin:0 0 1.5rem}
 .hero p.lede{font-size:1.2rem;max-width:34ch;color:#D6DBE3;margin:0 0 2rem}
+.hero p.call{margin:1.4rem 0 0;color:#D6DBE3}
+.hero p.call a{color:#fff;font-weight:700}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:.8rem}
 .hero .btn.ghost{color:#fff}
 
@@ -98,6 +102,7 @@ h1{font-family:var(--display);font-weight:900;font-stretch:72%;font-size:clamp(3
 .seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:3px;overflow:hidden;flex:none}
 .seg button{font:600 .82rem/1 var(--body);padding:.45rem .7rem;border:0;background:#fff;color:var(--ink);cursor:pointer}
 .seg button+button{border-left:1.5px solid var(--ink)}
+@media (pointer:coarse){.seg button{min-height:44px;padding:.6rem .9rem}}
 .seg button[aria-pressed="true"].yes{background:var(--ok);color:#fff}
 .seg button[aria-pressed="true"].no{background:var(--bad);color:#fff}
 .meter{display:flex;gap:4px;margin:1.2rem 0 .6rem}
@@ -151,6 +156,7 @@ h2.big{font-family:var(--display);font-weight:900;font-stretch:78%;font-size:cla
 .addon h4{margin:0;font-family:var(--display);font-stretch:90%;font-weight:800;font-size:1.25rem}
 .addon .amt{font-family:var(--display);font-weight:800;font-size:1.25rem;text-align:right;white-space:nowrap}
 .addon p{margin:0;color:var(--muted);font-size:.97rem;grid-column:1/-1;max-width:70ch}
+@media (max-width:520px){.addon{grid-template-columns:1fr}.addon .amt{text-align:left}}
 
 /* Process */
 .process{background:var(--steel);color:#fff}
@@ -193,6 +199,7 @@ footer .logo{color:#fff}
       <a href="#who">Who we help</a>
       <a href="#packages">Packages</a>
       <a href="#how">How it works</a>
+      <a href="tel:+15039309141">503-930-9141</a>
       <a class="btn" href="assessment.html">Free assessment</a>
     </nav>
   </div>
@@ -209,6 +216,7 @@ footer .logo{color:#fff}
           <a class="btn" href="assessment.html">Get a free assessment</a>
           <a class="btn ghost" href="#packages">See packages</a>
         </div>
+        <p class="call">Prefer to talk? Call <a href="tel:+15039309141">503-930-9141</a>.</p>
       </div>
 
       <div class="card" id="scorecard">

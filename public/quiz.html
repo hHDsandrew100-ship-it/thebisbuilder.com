@@ -39,6 +39,8 @@
 /* Author rules like label{display:grid} would otherwise override the hidden attribute */
 [hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
 body{margin:0;background:var(--concrete);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
@@ -87,6 +89,7 @@ main{flex:1}
 .opt .box{flex:none;width:1.3rem;height:1.3rem;border:2px solid var(--ink);margin-top:.15rem;display:grid;place-items:center}
 .opt[aria-pressed="true"] .box{background:var(--ink)}
 .opt[aria-pressed="true"] .box::after{content:"";width:.45rem;height:.45rem;background:var(--hivis)}
+.opts.single .box,.opts.single .box::after{border-radius:50%}
 .opt b{display:block;font-weight:700}
 .opt small{display:block;color:var(--muted);font-size:.92rem;line-height:1.45;margin-top:.15rem}
 .multi-note{font-size:.9rem;color:var(--muted);margin:.8rem 0 0}
@@ -139,7 +142,7 @@ footer{padding:2rem 0;text-align:center}
   </div>
 </header>
 
-<div class="intro">
+<div class="intro" role="region" aria-label="Introduction">
   <div class="wrap">
     <p class="eyebrow">Take the quiz!</p>
     <h1>What does your business need online?</h1>
@@ -162,7 +165,7 @@ footer{padding:2rem 0;text-align:center}
   </div>
 </main>
 
-<section class="bottom-cta">
+<section class="bottom-cta" aria-label="Skip the quiz">
   <div class="wrap">
     <h2>Rather skip the quiz?</h2>
     <p>Go straight to your free full assessment. We'll review your business online and send you a scorecard showing what to fix first.</p>
@@ -250,7 +253,7 @@ function renderQuestion(){
   [...progress.children].forEach((s, i) => s.className = i < step ? "done" : i === step ? "now" : "");
   qEl.innerHTML = `<p class="count">Question ${step + 1} of ${questions.length}</p>
     <h2 id="qt">${q.title}</h2><p class="why">${q.why}</p>
-    <div class="opts" role="group" aria-labelledby="qt">
+    <div class="opts${q.multi ? "" : " single"}" role="group" aria-labelledby="qt">
       ${q.options.map((o, i) => `<button type="button" class="opt" data-i="${i}" aria-pressed="${isPicked(i)}"><span class="box"></span><span><b>${o.label}</b><small>${o.sub}</small></span></button>`).join("")}
     </div>
     ${q.multi ? '<p class="multi-note">Choose as many as you like.</p>' : ""}`;
