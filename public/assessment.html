@@ -247,13 +247,9 @@ footer{padding:2rem 0;text-align:center}
   </form>
 </main>
 
-<footer><p class="foot-contact"><a href="tel:+15039309141">503-930-9141</a> &middot; <a href="mailto:andrew@thebusinessbuilder.tech">andrew@thebusinessbuilder.tech</a></p>Build It. Brand It. Grow It. &copy; <span id="yr"></span> The Business Builder &middot; <a class="foot-link" href="privacy.html">Privacy</a></footer>
+<footer><p class="foot-contact"><a href="tel:+15039309141">503-930-9141</a></p>Build It. Brand It. Grow It. &copy; <span id="yr"></span> The Business Builder &middot; <a class="foot-link" href="privacy.html">Privacy</a></footer>
 
 <script>
-/* ===== SETTINGS: change these ===== */
-const CONTACT_EMAIL = "andrew@thebusinessbuilder.tech";
-/* ================================== */
-
 document.getElementById("yr").textContent = new Date().getFullYear();
 
 // Presence checklist (matches the scorecard on the home page)
@@ -340,7 +336,7 @@ form.addEventListener("submit", async e => {
     window.scrollTo(0, 0);
   } catch {
     status.className = "status err";
-    status.textContent = `That didn't go through. Call 503-930-9141, email ${CONTACT_EMAIL}, or try again.`;
+    status.textContent = `That didn't go through. Call 503-930-9141 or try again.`;
   } finally { btn.disabled = false; }
 });
 </script>
