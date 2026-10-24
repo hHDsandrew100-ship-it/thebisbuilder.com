@@ -151,12 +151,11 @@ h2.big{font-family:var(--display);font-weight:900;font-stretch:78%;font-size:cla
 .pkg:not(.feature) .btn{background:transparent}
 .pkg:not(.feature) .btn:hover{background:var(--hivis)}
 
-.addons{margin-top:3rem;border-top:3px solid var(--ink)}
-.addon{display:grid;grid-template-columns:1fr auto;gap:.3rem 2rem;padding:1.2rem 0;border-bottom:1px solid var(--line);align-items:baseline}
-.addon h4{margin:0;font-family:var(--display);font-stretch:90%;font-weight:800;font-size:1.25rem}
-.addon .amt{font-family:var(--display);font-weight:800;font-size:1.25rem;text-align:right;white-space:nowrap}
-.addon p{margin:0;color:var(--muted);font-size:.97rem;grid-column:1/-1;max-width:70ch}
-@media (max-width:520px){.addon{grid-template-columns:1fr}.addon .amt{text-align:left}}
+/* Advertising */
+.ads{background:var(--paper)}
+.ads .wrap{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+@media (max-width:900px){.ads .wrap{grid-template-columns:1fr;gap:2.5rem}}
+.ads .sec-head{margin-bottom:0}
 
 /* Process */
 .process{background:var(--steel);color:#fff}
@@ -198,6 +197,7 @@ footer .logo{color:#fff}
     <nav class="nav" aria-label="Main">
       <a href="#who">Who we help</a>
       <a href="#packages">Packages</a>
+      <a href="#advertising">Advertising</a>
       <a href="#how">How it works</a>
       <a href="tel:+15039309141">503-930-9141</a>
       <a class="btn" href="assessment.html">Free assessment</a>
@@ -309,21 +309,30 @@ footer .logo{color:#fff}
           <a class="btn" href="assessment.html" data-pkg="Growth">Start with Growth</a>
         </article>
       </div>
+    </div>
+  </section>
 
-      <div class="addons">
-        <div class="addon">
-          <h4>Website Care</h4><span class="amt">$129/mo</span>
-          <p>Hosting, security, backups, software updates, minor changes and monitoring. For businesses that just need their site kept safe and running.</p>
-        </div>
-        <div class="addon">
-          <h4>Website Care Plus</h4><span class="amt">$199/mo</span>
-          <p>Everything in Website Care, plus content updates, SEO monitoring, Google Business updates and a monthly report.</p>
-        </div>
-        <div class="addon">
-          <h4>Advertising Management</h4><span class="amt">$299/mo + ad spend</span>
-          <p>Google Ads, Facebook and Instagram ads, retargeting, promotions, landing pages and lead generation. Our management fee and your ad budget are always listed separately on every invoice.</p>
-        </div>
+  <section class="ads" id="advertising">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="big">Want more leads from ads?</h2>
+        <p>We set up and manage your Google, Facebook and Instagram ads, with landing pages built to turn clicks into leads. Our management fee and your ad budget are always listed separately on every invoice.</p>
       </div>
+      <article class="pkg feature">
+        <p class="kind">Monthly service</p>
+        <h3>Advertising</h3>
+        <p class="full">Advertising Management</p>
+        <p class="price">$299<small>/mo + ad spend</small></p>
+        <ul>
+          <li>Google Ads</li>
+          <li>Facebook and Instagram ads</li>
+          <li>Retargeting</li>
+          <li>Promotions</li>
+          <li>Landing pages</li>
+          <li>Lead generation</li>
+        </ul>
+        <a class="btn" href="assessment.html" data-pkg="Advertising Management">Ask about advertising</a>
+      </article>
     </div>
   </section>
 
