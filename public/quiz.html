@@ -228,8 +228,8 @@ const questions = [
     title: "Who handles your online presence right now?",
     why: "This helps us see how much you'd like to hand off.",
     options: [
-      {label:"Nobody. I don't have time for it.", sub:"It's on my to-do list but never gets done", gap:2, need:["Someone to run it for you","Ongoing updates, posts and reviews handled every month, with a simple report."], care:"full"},
-      {label:"I do it myself when I can", sub:"Posts and updates only happen on slow days", gap:2, need:["Your time back","Hand off the posting, updates and SEO so you can focus on the work."], care:"full"},
+      {label:"Nobody. I don't have time for it.", sub:"It's on my to-do list but never gets done", gap:2, need:["Someone to run it for you","Ongoing updates and reviews handled every month, with a simple report."], care:"full"},
+      {label:"I do it myself when I can", sub:"Updates only happen on slow days", gap:2, need:["Your time back","Hand off the updates, reviews and SEO so you can focus on the work."], care:"full"},
       {label:"A friend or family member helps out", sub:"Someone who knows a bit about websites", gap:1, need:["Dependable, professional support","Updates, security and backups that don't depend on someone's free time."], care:"some"},
       {label:"A staff member or agency handles it well", sub:"We're happy with how it's going", gap:0, care:"none"}
     ]
@@ -306,11 +306,11 @@ function showResult(){
   if (site === "none" || site === "old") {
     pkg = care === "none" ? "Launch" : "Complete";
     pkgWhy = care === "none"
-      ? "A new website built to get calls, with Google and social profiles set up, handed over to your team."
-      : "We build your new site and then run your Google profile, social media, reviews and SEO every month.";
+      ? "A new website built to get calls, with your Google profile set up, handed over to your team."
+      : "We build your new site and then run your Google profile, reviews and local SEO every month.";
   } else {
     pkg = "Growth";
-    pkgWhy = "Keep your current site and let us handle Google, social media, reviews and local SEO each month.";
+    pkgWhy = "Keep your current site and let us handle your Google profile, reviews and local SEO each month.";
   }
 
   const res = document.getElementById("result");
@@ -333,7 +333,7 @@ function showResult(){
         ${features.length ? `<li><b>A website that does the job</b><span>Your site should include ${listJoin(features)}.</span></li>` : ""}
       </ul>
       <div class="rec"><strong>Recommended: ${pkg}</strong><p>${pkgWhy}</p></div>
-      <p>Your full assessment covers your website, Google profile, social pages, reviews and mobile experience, and shows you exactly what to fix first. It's free, with no obligation.</p>
+      <p>Your full assessment covers your website, Google profile, reviews and mobile experience, and shows you exactly what to fix first. It's free, with no obligation.</p>
       <div class="actions">
         <a class="btn" href="${url}">Get my full assessment</a>
         <button class="link" type="button" onclick="restart()">Retake the quiz</button>
