@@ -1,18 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "thebisbuilder-com",
-  "main": "src/index.js",
-  "compatibility_date": "2026-10-01",
+  "compatibility_date": "2025-09-01",
   "assets": {
-    "directory": "./public",
-    "not_found_handling": "404-page",
-    "run_worker_first": ["/api/*"]
-  },
-  "send_email": [{ "name": "EMAIL" }],
-  "vars": {
-    // Set before deploying. CONTACT_TO must be a verified Cloudflare destination address.
-    // CONTACT_FROM must be on a domain onboarded to Cloudflare Email Service.
-    "CONTACT_TO": "",
-    "CONTACT_FROM": ""
+    "directory": "./public"
   }
 }
