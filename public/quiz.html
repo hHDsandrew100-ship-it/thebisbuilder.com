@@ -308,9 +308,6 @@ function showResult(){
     pkgWhy = care === "none"
       ? "A new website built to get calls, with Google and social profiles set up, handed over to your team."
       : "We build your new site and then run your Google profile, social media, reviews and SEO every month.";
-  } else if (care === "none") {
-    pkg = "Website Care Plus";
-    pkgWhy = "Your site and marketing are covered. We'd keep it secure, updated and tracking well.";
   } else {
     pkg = "Growth";
     pkgWhy = "Keep your current site and let us handle Google, social media, reviews and local SEO each month.";
@@ -347,9 +344,9 @@ function showResult(){
       <p>${blocked
         ? "The Business Builder is built for small, local businesses without a dedicated marketing team. With your own team in place, you likely already have what a full assessment would cover."
         : "Your website, Google presence and day-to-day upkeep are already covered, so a full assessment wouldn't tell you much new right now."}</p>
-      ${blocked ? "" : `<div class="rec"><strong>Worth a look: Website Care</strong><p>If you ever want backups, security and updates handled for you, Website Care starts at $129/mo. Advertising management is also available if you want more leads from Google or Facebook ads.</p></div>`}
+      ${blocked ? "" : `<div class="rec"><strong>Worth a look: Advertising Management</strong><p>If you want more leads from Google, Facebook or Instagram ads, Advertising Management starts at $299/mo plus your ad spend.</p></div>`}
       <div class="actions">
-        <a class="btn" href="index.html#packages">See all packages</a>
+        <a class="btn" href="index.html#${blocked ? "packages" : "advertising"}">${blocked ? "See all packages" : "See advertising management"}</a>
         <button class="link" type="button" onclick="restart()">Retake the quiz</button>
       </div>`;
   }
