@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Business Builder | Build It. Brand It. Grow It.</title>
-<meta name="description" content="Websites, Google Business Profile, social media, local SEO, reviews and ads for small businesses. We handle the digital side of your business so you can focus on running it.">
+<meta name="description" content="Websites, Google Business Profile, local SEO, reviews, ads and apps for small businesses. You run the business. We build your website and handle your Google profile, reviews and ads.">
 <meta property="og:title" content="The Business Builder">
-<meta property="og:description" content="We become your digital department. Websites, local SEO, social media and ads for small businesses.">
+<meta property="og:description" content="Websites, local SEO, ads and apps for small businesses.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://thebisbuilder.com">
 <meta property="og:site_name" content="The Business Builder">
@@ -211,8 +211,8 @@ footer .logo{color:#fff}
     <div class="wrap">
       <div>
         <p class="tagline">Build It. Brand It. Grow It.</p>
-        <h1>We become your digital department.</h1>
-        <p class="lede">Your website, Google profile, social media, reviews and ads, all handled for you. You run the business. We make sure customers can find it.</p>
+        <h1>Websites, marketing and apps for small businesses.</h1>
+        <p class="lede">Your website, Google profile, reviews and ads, all handled for you. You run the business. We make sure customers can find it.</p>
         <div class="ctas">
           <a class="btn" href="assessment.html">Get a free assessment</a>
           <a class="btn ghost" href="#packages">See packages</a>
@@ -226,7 +226,7 @@ footer .logo{color:#fff}
         <ul class="checks" id="checks"></ul>
         <div class="meter" id="meter" aria-hidden="true"></div>
         <div class="result" aria-live="polite">
-          <strong id="score">0/7</strong>
+          <strong id="score">0/5</strong>
           <span id="verdict">Answer each line to see your score.</span>
         </div>
         <a class="btn" href="quiz.html" id="scoreCta">Take the quiz!</a>
@@ -239,7 +239,7 @@ footer .logo{color:#fff}
     <div class="wrap">
       <div class="sec-head">
         <h2 class="big">Built for businesses too busy working to fix their website.</h2>
-        <p>If you're just starting out, your website is outdated, or you don't have time to keep up with Google and social media, we're here for you.</p>
+        <p>If you're just starting out, your website is outdated, or you don't have time to keep up with your Google profile and reviews, we're here for you.</p>
       </div>
       <div class="trades">
         <div class="trade"><h3>Home &amp; trade services</h3><p>Cleaners, landscapers, handymen, contractors, plumbers, electricians, painters.</p></div>
@@ -269,7 +269,6 @@ footer .logo{color:#fff}
             <li>Domain and business email setup</li>
             <li>Contact forms and click-to-call</li>
             <li>Google Business Profile setup</li>
-            <li>Social media profile setup</li>
             <li>Basic branding and SEO</li>
             <li>Analytics and launch</li>
           </ul>
@@ -285,7 +284,6 @@ footer .logo{color:#fff}
             <li>Everything in Launch</li>
             <li>Everything in Growth</li>
             <li>Hosting, maintenance and website changes</li>
-            <li>Social media and content</li>
             <li>Local SEO and reputation management</li>
             <li>Marketing strategy</li>
             <li>Monthly reporting</li>
@@ -302,7 +300,6 @@ footer .logo{color:#fff}
             <li>Hosting and maintenance</li>
             <li>Security updates and site edits</li>
             <li>Google Business Profile management</li>
-            <li>Social media management and content</li>
             <li>Local SEO</li>
             <li>Review management</li>
             <li>Monthly report and marketing check-in</li>
@@ -364,11 +361,11 @@ footer .logo{color:#fff}
         <p>No jargon and no surprises. Here's exactly what happens after you reach out.</p>
       </div>
       <ol class="steps">
-        <li><h3>Free assessment</h3><p>We review your website, Google profile, social pages, reviews, SEO and mobile experience.</p></li>
+        <li><h3>Free assessment</h3><p>We review your website, Google profile, reviews, SEO and mobile experience.</p></li>
         <li><h3>Walk through the gaps</h3><p>We show you a simple scorecard: what's working, what's missing and what it's costing you.</p></li>
         <li><h3>Choose a package</h3><p>We recommend Launch, Growth or both together as Complete, based on where you are today. You decide.</p></li>
         <li><h3>We build it</h3><p>We set up and launch your site, profiles and accounts. Everything is in your name, and you own it.</p></li>
-        <li><h3>We keep it running</h3><p>Updates, posts, reviews and SEO happen every month, without you having to chase anyone.</p></li>
+        <li><h3>We keep it running</h3><p>Updates, reviews and SEO happen every month, without you having to chase anyone.</p></li>
         <li><h3>You see the results</h3><p>A plain-English monthly report shows your calls, visits and reviews, plus what we're doing next.</p></li>
       </ol>
     </div>
@@ -376,7 +373,7 @@ footer .logo{color:#fff}
 
   <div class="promise">
     <div class="wrap">
-      <p>We handle the digital side of your business so you can focus on running it.</p>
+      <p>You run the business. We build your website and handle your Google profile, reviews and ads.</p>
     </div>
   </div>
 
@@ -402,7 +399,7 @@ footer .logo{color:#fff}
 document.getElementById("yr").textContent = new Date().getFullYear();
 
 // Scorecard
-const items = ["Website","Google Business Profile","Facebook","Instagram","Local search visibility","Online reviews","Mobile-friendly website"];
+const items = ["Website","Google Business Profile","Local search visibility","Online reviews","Mobile-friendly website"];
 const state = items.map(() => null);
 const checks = document.getElementById("checks");
 const meter = document.getElementById("meter");
@@ -429,12 +426,12 @@ function render(){
   const have = state.filter(v => v === true).length;
   const answered = state.filter(v => v !== null).length;
   [...meter.children].forEach((s, i) => s.className = state[i] === true ? "on" : state[i] === false ? "off" : "");
-  document.getElementById("score").textContent = `${have}/7`;
+  document.getElementById("score").textContent = `${have}/${items.length}`;
   let v;
-  if (answered < 7) v = `${7 - answered} left to answer.`;
-  else if (have <= 2) v = "Customers searching for you are likely finding a competitor instead.";
-  else if (have <= 5) v = "You have a start, but there are gaps costing you calls.";
-  else if (have === 6) v = "Almost there. One gap is worth closing.";
+  if (answered < items.length) v = `${items.length - answered} left to answer.`;
+  else if (have <= 1) v = "Customers searching for you are likely finding a competitor instead.";
+  else if (have <= 3) v = "You have a start, but there are gaps costing you calls.";
+  else if (have === 4) v = "Almost there. One gap is worth closing.";
   else v = "Strong foundation. Now it's about keeping it active and growing.";
   document.getElementById("verdict").textContent = v;
 }
